@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Herb Prediction 🔮</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="/static/js/main.js" defer></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: radial-gradient(circle at top, #0c2d1a, #020805);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #eaffea;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #b6ffcf;
+    }
+
+    .card {
+      background: #0a1a12;
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 0 40px rgba(0,255,150,0.18);
+      border: 1px solid rgba(0,255,150,0.15);
+    }
+
+    p {
+      color: #caffdd;
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .sensor-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #07140e;
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin: 14px 0;
+      border: 1px solid rgba(0,255,150,0.12);
+    }
+
+    .sensor-box span {
+      font-weight: 500;
+    }
+
+    .sensor-box button {
+      padding: 7px 16px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: linear-gradient(135deg, #00ff9d, #00c47a);
+      color: #00331f;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 10px rgba(0,255,150,0.4);
+    }
+
+    .sensor-box button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 18px rgba(0,255,150,0.7);
+    }
+
+    .status-ok {
+      color: #00ff80;
+      font-weight: 600;
+    }
+
+    .status-fail {
+      color: #ff6b6b;
+      font-weight: 600;
+    }
+
+    #predictBtn {
+      padding: 13px 24px;
+      border-radius: 16px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #7dffb2, #00ff9d);
+      color: #00331f;
+      margin-right: 15px;
+      box-shadow: 0 0 20px rgba(0,255,150,0.6);
+    }
+
+    #clearTest {
+      padding: 13px 24px;
+      border-radius: 16px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      background: #ff5c5c;
+      color: white;
+      box-shadow: 0 0 18px rgba(255,90,90,0.6);
+    }
+
+    #result {
+      background: #07140e;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      color: #eaffea;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 22px;
+      min-height: 80px;
+      border: 1px solid rgba(0,255,150,0.12);
+    }
+
+    button.back {
+      margin-top: 25px;
+      padding: 11px 24px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      background: #00c47a;
+      color: #002a18;
+      font-weight: 600;
+    }
+
+    @media (max-width: 500px) {
+      .sensor-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sensor-box button {
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1>🔮 Herb Prediction</h1>
+
+  <div class="card">
+    <p>
+      Collect sensor values from hardware.<br>
+      If no data is received, system will show ❌.
+    </p>
+
+    <div class="sensor-box">
+      <span>pH</span>
+      <button onclick="fetchSensor('ph')">Read</button>
+      <span id="ph_status" class="status-fail">❌ Not collected</span>
+    </div>
+
+    <div class="sensor-box">
+      <span>TDS</span>
+      <button onclick="fetchSensor('tds')">Read</button>
+      <span id="tds_status" class="status-fail">❌ Not collected</span>
+    </div>
+
+    <div class="sensor-box">
+      <span>Optical</span>
+      <button onclick="fetchSensor('optical')">Read</button>
+      <span id="optical_status" class="status-fail">❌ Not collected</span>
+    </div>
+
+    <div style="text-align:center;margin-top:22px">
+      <button id="predictBtn" onclick="predict()">🔍 Predict</button>
+      <button id="clearTest" onclick="clearSensors()">🔄 Clear Test</button>
+    </div>
+
+    <div id="result"></div>
+
+    <button class="back" onclick="history.back()">⬅ Back</button>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Herbal Intelligence System</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+
+      /* 🌿 GREEN HERBAL THEME BACKGROUND */
+      background: radial-gradient(
+          circle at top,
+          #3fa34d,
+          #1e5631,
+          #0b3d2e
+      );
+
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      padding: 40px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .hero-card h1 {
+      font-size: 3rem;
+      color: #eaffea;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .hero-card p {
+      color: #d8f5d8;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .btn-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .hero-btn {
+      padding: 18px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      color: #0f2e1d;
+      background: linear-gradient(135deg, #9dffb3, #5ee58c);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+    }
+
+    .hero-btn.collect {
+      background: linear-gradient(135deg, #c1ffd7, #7dffb2);
+    }
+
+    .hero-btn.predict {
+      background: linear-gradient(135deg, #b8f1ff, #6fd3ff);
+    }
+
+    .hero-btn.train {
+      background: linear-gradient(135deg, #ffe7a3, #ffd36e);
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #cfeccc;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="hero-card">
+      <h1>🌿 Herbal Intelligence System</h1>
+      <p>
+        Smart sensor-based herbal analysis for taste, purity & prediction  
+        <br>powered by IoT & Machine Learning
+      </p>
+
+      <div class="btn-group">
+        <button class="hero-btn collect" onclick="location.href='/collect'">
+          🌱 Collect Herb Data
+        </button>
+
+        <button class="hero-btn predict" onclick="location.href='/predict'">
+          🔍 Test & Predict
+        </button>
+
+        <button class="hero-btn train" onclick="location.href='/train'">
+          🧠 Make / Update Model
+        </button>
+      </div>
+
+      <footer>
+        © Herbal AI • Nature Inspired Intelligence
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
