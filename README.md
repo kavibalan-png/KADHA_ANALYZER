@@ -116,6 +116,8 @@ E-Tongue-for-Dravya-Identification
 
 ## PROJECT IMAGES
 
+![iKwath Hardware Components](Images/hardware_components.jpg)
+
 Project images and prototype photographs will be added soon.
 
 ---
